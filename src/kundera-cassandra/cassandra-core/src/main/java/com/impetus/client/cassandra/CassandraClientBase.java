@@ -1997,7 +1997,8 @@ public abstract class CassandraClientBase extends ClientBase implements ClientPr
      */
     @Override
     public void populateClientProperties(Client client, Map<String, Object> properties)
-    {
+    {	
+    	log.info("Populating proprties in cassandra client base : " + properties);
         new CassandraClientProperties().populateClientProperties(client, properties);
     }
 

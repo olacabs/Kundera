@@ -51,8 +51,18 @@ public class ClientProperties implements Serializable
     {
         this.datastores = datastores;
     }
+    
 
-    @XmlRootElement
+    /* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+    @Override
+    public String toString() {
+	    return "ClientProperties [datastores=" + datastores + "]";
+    }
+
+
+	@XmlRootElement
     public static class DataStore
     {
         private Connection connection;
@@ -132,8 +142,18 @@ public class ClientProperties implements Serializable
         {
             this.schemas = schemas;
         }
+        
 
-        @XmlRootElement
+        /* (non-Javadoc)
+		 * @see java.lang.Object#toString()
+		 */
+        @Override
+        public String toString() {
+	        return "DataStore [connection=" + connection + ", schemas=" + schemas + ", name=" + name + ", properties=" + properties + "]";
+        }
+
+
+		@XmlRootElement
         public static class Schema
         {
             private List<Table> tables;
@@ -212,8 +232,20 @@ public class ClientProperties implements Serializable
             {
                 this.dataCenters = dataCenters;
             }
+            
+            
 
-            public static class Table
+            /* (non-Javadoc)
+			 * @see java.lang.Object#toString()
+			 */
+            @Override
+            public String toString() {
+	            return "Schema [tables=" + tables + ", properties=" + properties + ", dataCenters=" + dataCenters + ", name=" + name + "]";
+            }
+
+
+
+			public static class Table
             {
                 private Properties properties;
 
@@ -251,6 +283,14 @@ public class ClientProperties implements Serializable
                 public void setProperties(Properties properties)
                 {
                     this.properties = properties;
+                }
+
+				/* (non-Javadoc)
+				 * @see java.lang.Object#toString()
+				 */
+                @Override
+                public String toString() {
+	                return "Table [properties=" + properties + ", name=" + name + "]";
                 }
 
             }
@@ -294,6 +334,15 @@ public class ClientProperties implements Serializable
                 {
                     this.value = value;
                 }
+
+				/* (non-Javadoc)
+				 * @see java.lang.Object#toString()
+				 */
+                @Override
+                public String toString() {
+	                return "DataCenter [name=" + name + ", value=" + value + "]";
+                }
+                
             }
         }
 
@@ -336,8 +385,18 @@ public class ClientProperties implements Serializable
             {
                 this.servers = servers;
             }
+            
+            /* (non-Javadoc)
+			 * @see java.lang.Object#toString()
+			 */
+            @Override
+            public String toString() {
+	            return "Connection [properties=" + properties + ", servers=" + servers + "]";
+            }
 
-            public static class Server
+
+
+			public static class Server
             {
                 private String host;
 
@@ -400,6 +459,15 @@ public class ClientProperties implements Serializable
                 {
                     this.properties = properties;
                 }
+
+				/* (non-Javadoc)
+				 * @see java.lang.Object#toString()
+				 */
+                @Override
+                public String toString() {
+	                return "Server [host=" + host + ", port=" + port + ", properties=" + properties + "]";
+                }
+                
             }
         }
     }

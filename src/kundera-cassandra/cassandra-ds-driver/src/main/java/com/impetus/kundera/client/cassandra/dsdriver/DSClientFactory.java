@@ -185,6 +185,8 @@ public class DSClientFactory extends CassandraClientFactory
         }
 
         Properties connectionProperties = CassandraPropertyReader.csmd.getConnectionProperties();
+        logger.info("connectionProperties from CassandraPropertyReader.csmd " + connectionProperties);
+       
         Builder connectionBuilder = Cluster.builder();
 
         // add host/port and AuthInfoProvider

@@ -58,7 +58,7 @@ class CassandraClientProperties
      * @param properties the properties
      */
     public void populateClientProperties(Client client, Map<String, Object> properties)
-    {
+    {	
         this.cassandraClientBase = (CassandraClientBase) client;
 
         if (properties != null)

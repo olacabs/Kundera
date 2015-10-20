@@ -90,7 +90,7 @@ public interface CassandraConstants
 
     public static final String TEST_WHILE_IDLE = "testwhileidle";
 
-    public static final String TEST_ON_RETURN = "testonretrun";
+    public static final String TEST_ON_RETURN = "testonreturn";
 
     public static final String SOCKET_TIMEOUT = "socket.timeout";
 

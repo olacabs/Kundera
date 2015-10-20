@@ -76,23 +76,23 @@ public class KunderaPersistence implements PersistenceProvider
     @Override
     public synchronized final EntityManagerFactory createEntityManagerFactory(String persistenceUnit, Map map)
     {
-        // TODO: This may be a comma separated PU list, synchronizing on this
-        // list may not be intended
-        synchronized (this)
-        {
-            try
-            {
-                EntityManagerFactory emf = new EntityManagerFactoryImpl(persistenceUnit, map);
-
-                return emf;
-            }
-            catch (PersistenceUnitConfigurationException pcex)
-            {
-                // Means it is not for kundera persistence!
-                logger.error("EntityManagerFactory not created, returning null.");
-                return null;
-            }
-        }
+    	// TODO: This may be a comma separated PU list, synchronizing on this
+    	// list may not be intendes
+    	synchronized (this)
+    	{
+    		try
+    		{
+    			logger.info("Creating Entity manager factory with persistenceUnit : " + persistenceUnit + ", map : " + map);
+    			EntityManagerFactory emf = new EntityManagerFactoryImpl(persistenceUnit, map);
+    			return emf;
+    		}
+    		catch (PersistenceUnitConfigurationException pcex)
+    		{
+    			// Means it is not for kundera persistence!
+    			logger.error("EntityManagerFactory not created, returning null.");
+    			return null;
+    		}
+    	}
     }
 
     /**

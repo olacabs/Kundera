@@ -764,10 +764,12 @@ public final class PersistenceDelegator
      *            map of properties.
      */
     void populateClientProperties(Map properties)
-    {
+    {	
+    	log.info("Persistence delegator properties : " + properties);
         if (properties != null && !properties.isEmpty())
         {
             Map<String, Client> clientMap = getDelegate();
+            log.info("Persistence delegator clientMap : " + clientMap);
             if (!clientMap.isEmpty())
             {
                 // TODO If we have two pu for same client then? Need to discuss

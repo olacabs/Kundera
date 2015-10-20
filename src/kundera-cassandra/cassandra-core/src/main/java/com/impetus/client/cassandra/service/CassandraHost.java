@@ -125,13 +125,16 @@ public class CassandraHost implements Host
         return HashCodeBuilder.reflectionHashCode(builder);
     }
 
+    /* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
     @Override
-    public String toString()
-    {
-        StringBuilder builder = new StringBuilder(host);
-        builder.append(":");
-        builder.append(port);
-        return builder.toString();
+    public String toString() {
+	    return "CassandraHost [maxActive=" + maxActive + ", maxIdle=" + maxIdle + ", minIdle=" + minIdle + ", maxTotal=" + maxTotal + ", host="
+	            + host + ", port=" + port + ", initialSize=" + initialSize + ", testOnBorrow=" + testOnBorrow + ", testOnConnect=" + testOnConnect
+	            + ", testOnReturn=" + testOnReturn + ", testWhileIdle=" + testWhileIdle + ", socketTimeOut=" + socketTimeOut
+	            + ", hostFailoverPolicy=" + hostFailoverPolicy + ", retryHost=" + retryHost + ", userName=" + userName + ", password=" + password
+	            + ", maxWait=" + maxWait + "]";
     }
 
     public void setInitialSize(int initialSize)

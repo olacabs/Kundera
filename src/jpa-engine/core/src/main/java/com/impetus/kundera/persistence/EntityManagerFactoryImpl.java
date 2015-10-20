@@ -108,7 +108,7 @@ public class EntityManagerFactoryImpl implements EntityManagerFactory
     public EntityManagerFactoryImpl(PersistenceUnitInfo puInfo, Map<String, Object> properties)
     {
         // Load Core
-        logger.info("Loading Core");
+    	logger.info("Loading Core with PersistenceUnitInfo : " + puInfo + ", properties : " + properties);
         new CoreLoader().load(kunderaMetadata);
 
         this.configurePersistenceUnit(puInfo, properties);
@@ -127,7 +127,7 @@ public class EntityManagerFactoryImpl implements EntityManagerFactory
     public EntityManagerFactoryImpl(String persistenceUnit, Map<String, Object> properties)
     {
         // Load Core
-        logger.info("Loading Core");
+        logger.info("Loading Core with persistenceUnit : " + persistenceUnit + ", properties : " + properties);
         new CoreLoader().load(kunderaMetadata);
 
         this.configurePersistenceUnit(persistenceUnit, properties);
@@ -246,7 +246,7 @@ public class EntityManagerFactoryImpl implements EntityManagerFactory
     {
         // For Application managed persistence context, type is always EXTENDED
         if (isOpen())
-        {
+        {	logger.info("createEntityManager called without properties");
             return new EntityManagerImpl(this, transactionType, PersistenceContextType.EXTENDED);
         }
         throw new IllegalStateException("Entity manager factory has been closed.");
@@ -269,6 +269,7 @@ public class EntityManagerFactoryImpl implements EntityManagerFactory
         // For Application managed persistence context, type is always EXTENDED
         if (isOpen())
         {
+        	logger.info("createEntityManager called with properties : " + map);
             return new EntityManagerImpl(this, map, transactionType, PersistenceContextType.EXTENDED);
         }
         throw new IllegalStateException("Entity manager factory has been closed.");

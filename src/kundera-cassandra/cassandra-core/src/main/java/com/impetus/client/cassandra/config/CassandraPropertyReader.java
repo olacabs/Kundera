@@ -60,7 +60,8 @@ public class CassandraPropertyReader extends AbstractPropertyReader implements P
     }
 
     public void onXml(ClientProperties cp)
-    {
+    {	
+    	logger.info("Client properties loaded from property file : " + cp);
         if (cp != null)
         {
             csmd.setClientProperties(cp);

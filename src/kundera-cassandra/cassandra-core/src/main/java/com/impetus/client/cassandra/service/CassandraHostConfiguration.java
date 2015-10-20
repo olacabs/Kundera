@@ -89,6 +89,7 @@ public class CassandraHostConfiguration extends HostConfiguration
             CassandraHost cassandraHost = port == CassandraHost.DEFAULT_PORT ? new CassandraHost(host)
                     : new CassandraHost(host, port);
             setConfig(cassandraHost, persistenceUnitMetadata.getProperties(), externalProperties);
+            logger.info("cassandraHost configuration : " + cassandraHost);
             cassandraHosts.add(cassandraHost);
             hostsList.add(cassandraHost);
         }
@@ -129,6 +130,7 @@ public class CassandraHostConfiguration extends HostConfiguration
             password = (String) connectionProperties.get(PersistenceProperties.KUNDERA_PASSWORD);
             maxWaitInMilli = (String) connectionProperties.get(CassandraConstants.MAX_WAIT);
             hostRetry = Boolean.parseBoolean((String)connectionProperties.get(Constants.RETRY));
+            failOverPolicy = (String) connectionProperties.get(Constants.FAILOVER_POLICY);
         }
 
         if (props != null)
